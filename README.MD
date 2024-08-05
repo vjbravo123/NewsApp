@@ -33,7 +33,7 @@ Installation
 
     bash
 
-git clone https://github.com/yourusername/news-app.git
+git clone https://github.com/vjbravo123/NewsApp.git
 cd news-app
 
 Install dependencies for both client and server:
@@ -79,7 +79,7 @@ bash
 The frontend application will be available at http://localhost:3000 and the backend server at http://localhost:5000.
 Project Structure
 
-csharp
+
 
 NEWSAPP/
 ├── Client/                  # React frontend
