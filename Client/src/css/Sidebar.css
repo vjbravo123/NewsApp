@@ -1,0 +1,111 @@
+/* Ensure body does not overflow when sidebar is fixed */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 250px; /* Default width */
+  height: calc(100vh - 60px); /* Full height minus navbar height */
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+  border-right: 1px solid #34495e; /* Border on the right side */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Shadow on the right side */
+  overflow-y: auto;
+  position: fixed; /* Fixed on the left side */
+  top: 60px; /* Position below the navbar */
+  left: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000; /* Ensure sidebar is above other content */
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%); /* Hide sidebar off-screen */
+}
+
+.sidebar.show {
+  transform: translateX(0); /* Show sidebar */
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  border-bottom: 1px solid #34495e;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  background-color: #34495e;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.category:hover {
+  background-color: #1abc9c;
+  padding-left: 20px;
+}
+
+.category-icon {
+  margin-right: 10px;
+}
+
+.category-section {
+  margin-bottom: 30px;
+}
+
+/* Toggle button styles */
+.menu-button {
+  display: none;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  padding: 10px;
+  font-size: 1.5em;
+  position: fixed;
+  top: 20px;
+  right: 20px; /* Toggle button on the right side */
+  cursor: pointer;
+  z-index: 1001; /* Ensure button is above the sidebar */
+}
+
+/* Show the menu button and adjust sidebar for small screens */
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .sidebar {
+    width: 200px; /* Adjust sidebar width for small screens */
+    transform: translateX(100%); /* Hide sidebar off-screen initially */
+    top: 0; /* Align with top of the screen */
+    height: 100vh; /* Full height for small screens */
+    right: 0; /* Align to the right side */
+  }
+
+  .sidebar.show {
+    transform: translateX(0); /* Show sidebar */
+  }
+}
+
+/* Ensure main content doesn't go behind the sidebar */
+.main-content {
+  margin-left: 250px; /* Adjust this value based on sidebar width */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Adjust main content margin for small screens */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0; /* Remove margin on smaller screens */
+  }
+}
